@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 - Студент: [Егор Вилявин](https://up.htmlacademy.ru/react/14/user/2121439).
-- Наставник: `https://htmlacademy.ru/profile/id423707`.
+- Наставник: [Юлия Волкова](https://htmlacademy.ru/profile/id423707).
 
 ---
 
