@@ -1,6 +1,6 @@
 import Header from '../../components/header/header';
 import CityCard from '../../components/city-card/city-card';
-import DataCardCityArr from '../../components/city-card/data-card';
+import DataCardCityArr from '../../components/city-card/city-card-data';
 import CityLocationsList from './six-cities-main-component/city-locations-list/city-locations-list';
 import CityLocationsArr from './six-cities-main-component/city-locations-list/city-locations-data';
 import { v4 as uuidv4 } from 'uuid';
