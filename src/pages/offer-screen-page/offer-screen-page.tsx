@@ -81,7 +81,11 @@ function OfferScreenPage(): JSX.Element {
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
                 {OfferHostUserArr.map((item) => (
-                  <OfferHostUser name={item.name} status={item.status} />
+                  <OfferHostUser
+                    name={item.name}
+                    status={item.status}
+                    key={uuidv4()}
+                  />
                 ))}
               </div>
               <section className="offer__reviews reviews">
@@ -95,6 +99,7 @@ function OfferScreenPage(): JSX.Element {
                       userName={item.userName}
                       reviewsText={item.reviewsText}
                       reviewsDate={item.reviewsDate}
+                      key={uuidv4()}
                     />
                   ))}
                 </ul>
