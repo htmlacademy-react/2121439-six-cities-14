@@ -1,12 +1,14 @@
 import CityCard from '../../components/city-card/city-card';
 import Header from '../../components/header/header';
 import DataCardCityArr from '../../components/city-card/city-card-data';
-import OfferScreenImageList from './offer-screen-component/offer-screen-image-list';
-import OfferImageDataArr from './offer-screen-image-data';
+import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
+import OfferImageDataArr from './offer-screen-component/offer-screen-image-list/offer-screen-image-data';
 import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
-import OfferHostUserArr from './offer-host-user-data';
+import OfferHostUserArr from './offer-screen-component/offer-host-user/offer-host-user-data';
 import OfferScreenReviews from './offer-screen-component/offer-screen-reviews/offer-screen-reviews';
-import OfferScreenRivewsUserArr from './offer-reviews-data';
+import OfferScreenRivewsUserArr from './offer-screen-component/offer-screen-reviews/offer-reviews-data';
+import OfferInsideList from './offer-screen-component/offer-inside-list/offer-inside-list';
+import OfferInsideListArr from './offer-screen-component/offer-inside-list/offer-inside-list-data';
 import { v4 as uuidv4 } from 'uuid';
 
 function OfferScreenPage(): JSX.Element {
@@ -66,16 +68,9 @@ function OfferScreenPage(): JSX.Element {
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
-                  <li className="offer__inside-item">Wi-Fi</li>
-                  <li className="offer__inside-item">Washing machine</li>
-                  <li className="offer__inside-item">Towels</li>
-                  <li className="offer__inside-item">Heating</li>
-                  <li className="offer__inside-item">Coffee machine</li>
-                  <li className="offer__inside-item">Baby seat</li>
-                  <li className="offer__inside-item">Kitchen</li>
-                  <li className="offer__inside-item">Dishwasher</li>
-                  <li className="offer__inside-item">Cabel TV</li>
-                  <li className="offer__inside-item">Fridge</li>
+                  {OfferInsideListArr.map((item) => (
+                    <OfferInsideList title={item} key={uuidv4()} />
+                  ))}
                 </ul>
               </div>
               <div className="offer__host">
