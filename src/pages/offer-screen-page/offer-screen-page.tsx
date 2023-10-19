@@ -5,6 +5,8 @@ import OfferScreenImageList from './offer-screen-component/offer-screen-image-li
 import OfferImageDataArr from './offer-screen-image-data';
 import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
 import OfferHostUserArr from './offer-host-user-data';
+import OfferScreenReviews from './offer-screen-component/offer-screen-reviews/offer-screen-reviews';
+import OfferScreenRivewsUserArr from './offer-reviews-data';
 import { v4 as uuidv4 } from 'uuid';
 
 function OfferScreenPage(): JSX.Element {
@@ -87,36 +89,14 @@ function OfferScreenPage(): JSX.Element {
                   Reviews &middot; <span className="reviews__amount">1</span>
                 </h2>
                 <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img
-                          className="reviews__avatar user__avatar"
-                          src="img/avatar-max.jpg"
-                          width="54"
-                          height="54"
-                          alt="Reviews avatar"
-                        />
-                      </div>
-                      <span className="reviews__user-name">Max</span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{ width: '80%' }}></span>
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river
-                        by the unique lightness of Amsterdam. The building is
-                        green and from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">
-                        April 2019
-                      </time>
-                    </div>
-                  </li>
+                  {OfferScreenRivewsUserArr.map((item) => (
+                    <OfferScreenReviews
+                      avatar={item.avatar}
+                      userName={item.userName}
+                      reviewsText={item.reviewsText}
+                      reviewsDate={item.reviewsDate}
+                    />
+                  ))}
                 </ul>
                 <form className="reviews__form form" action="#" method="post">
                   <label
