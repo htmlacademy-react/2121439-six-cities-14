@@ -1,0 +1,15 @@
+function NotFoundPage(): JSX.Element {
+  return (
+    <section>
+      <h1>
+        Erorr 404
+        <br />
+        <small>Page not found</small>
+      </h1>
+      <br />
+      <a href="#">Back to home page</a>
+    </section>
+  );
+}
+
+export default NotFoundPage;
