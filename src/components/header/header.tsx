@@ -7,7 +7,10 @@ function Header(): JSX.Element {
     <header className="header">
       <div className="container">
         <div className="header__wrapper">
-          <Logo />
+          <div className="header__left">
+            <Logo />
+          </div>
+
           <nav className="header__nav">
             <HeaderUserLogin authorizationStatus={AuthorizationStatus.NoAuth} />
           </nav>

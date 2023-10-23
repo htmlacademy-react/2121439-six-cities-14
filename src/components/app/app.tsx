@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 //Импорт pages для роутера
 import SixCitiesScreen from '../../pages/six-cities-main-page/six-citites-screen-page';
 import LoginScreenPage from '../../pages/login-screen-page/login-screen-page';
@@ -8,28 +9,31 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
+import { HelmetProvider } from 'react-helmet-async';
 function App(): JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<SixCitiesScreen countOffer={200} />}
-        />
-        <Route
-          path={AppRoute.Favorites}
-          element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <FavoritesScreenPage />
-            </PrivateRoute>
-          }
-        />
-        <Route path={AppRoute.Login} element={<LoginScreenPage />} />
-        <Route path={AppRoute.Offer} element={<OfferScreenPage />} />
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Main}
+            element={<SixCitiesScreen countOffer={200} />}
+          />
+          <Route
+            path={AppRoute.Favorites}
+            element={
+              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                <FavoritesScreenPage />
+              </PrivateRoute>
+            }
+          />
+          <Route path={AppRoute.Login} element={<LoginScreenPage />} />
+          <Route path={AppRoute.Offer} element={<OfferScreenPage />} />
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

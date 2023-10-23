@@ -3,6 +3,7 @@ import CityCard from '../../components/city-card/city-card';
 import DataCardCityArr from '../../components/city-card/city-card-data';
 import CityLocationsList from './six-cities-main-component/city-locations-list/city-locations-list';
 import CityLocationsArr from './six-cities-main-component/city-locations-list/city-locations-data';
+import { Helmet } from 'react-helmet-async';
 import { v4 as uuidv4 } from 'uuid';
 
 type CountPlaces = {
@@ -12,6 +13,9 @@ type CountPlaces = {
 function SixCitiesScreen({ countOffer }: CountPlaces): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>6 Cities</title>
+      </Helmet>
       <Header />
 
       <main className="page__main page__main--index">
@@ -70,6 +74,7 @@ function SixCitiesScreen({ countOffer }: CountPlaces): JSX.Element {
                       title={item.title}
                       price={item.price}
                       key={item.key}
+                      id={item.id}
                     />
                   )
                 )}

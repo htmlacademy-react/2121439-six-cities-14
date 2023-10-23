@@ -1,17 +1,21 @@
 import PremiumCardArticle from './city-card-component/card-premium-article';
 
+import { Link } from 'react-router-dom';
+
 type CardCityProps = {
   src: string;
   title: string;
   price: number;
+  key: string;
+  id: string;
 };
 
-function CityCard({ src, title, price }: CardCityProps): JSX.Element {
+function CityCard({ src, title, price, id, key }: CardCityProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       <PremiumCardArticle />
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`"/offer/:"${id}`}>
           <img
             className="place-card__image"
             src={src}
@@ -19,7 +23,7 @@ function CityCard({ src, title, price }: CardCityProps): JSX.Element {
             height="200"
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -41,7 +45,7 @@ function CityCard({ src, title, price }: CardCityProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`"/offer/:"${key}`}>{title}</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>
