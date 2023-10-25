@@ -6,24 +6,21 @@ type CardCityProps = {
   src: string;
   title: string;
   price: number;
-  key: string;
   id: string;
 };
 
-function CityCard({ src, title, price, id, key }: CardCityProps): JSX.Element {
+function CityCard({ src, title, price, id }: CardCityProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       <PremiumCardArticle />
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`"/offer/:"${id}`}>
-          <img
-            className="place-card__image"
-            src={src}
-            width="260"
-            height="200"
-            alt="Place image"
-          />
-        </Link>
+        <img
+          className="place-card__image"
+          src={src}
+          width="260"
+          height="200"
+          alt="Place image"
+        />
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -45,7 +42,7 @@ function CityCard({ src, title, price, id, key }: CardCityProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`"/offer/:"${key}`}>{title}</Link>
+          <Link to={`/offer/:${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">Apartment</p>
       </div>

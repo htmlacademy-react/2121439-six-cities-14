@@ -73,7 +73,7 @@ function SixCitiesScreen({ countOffer }: CountPlaces): JSX.Element {
                       src={item.src}
                       title={item.title}
                       price={item.price}
-                      key={item.key}
+                      key={item.id}
                       id={item.id}
                     />
                   )

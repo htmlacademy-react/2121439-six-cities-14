@@ -30,7 +30,6 @@ function HeaderUserLogin({
       ) : (
         <>
           <li className="header__nav-item user">
-            {' '}
             <div className="header__avatar-wrapper user__avatar-wrapper"></div>
           </li>
           <li className="header__nav-item">
