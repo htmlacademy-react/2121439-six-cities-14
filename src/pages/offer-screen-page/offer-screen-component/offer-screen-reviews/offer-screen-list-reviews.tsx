@@ -5,7 +5,7 @@ type OfferScreenReviewsProps = {
   reviewsDate: string;
 };
 
-function OfferScreenReviews({
+function OfferScreenListReviews({
   avatar,
   userName,
   reviewsText,
@@ -41,4 +41,4 @@ function OfferScreenReviews({
   );
 }
 
-export default OfferScreenReviews;
+export default OfferScreenListReviews;

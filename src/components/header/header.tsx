@@ -1,4 +1,5 @@
 import Logo from './logo';
+
 import HeaderUserLogin from './header-user-login';
 import { AuthorizationStatus } from '../../const';
 
@@ -10,7 +11,6 @@ function Header(): JSX.Element {
           <div className="header__left">
             <Logo />
           </div>
-
           <nav className="header__nav">
             <HeaderUserLogin authorizationStatus={AuthorizationStatus.NoAuth} />
           </nav>
