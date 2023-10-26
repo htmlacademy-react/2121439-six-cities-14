@@ -6,9 +6,7 @@ function FavoritesScreenPage(): JSX.Element {
   return (
     <div className="page">
       <Helmet>
-        <title>
-          <title>6 Cities. Favorites </title>
-        </title>
+        <title>6 Cities. Favorites </title>
       </Helmet>
       <Header />
 
