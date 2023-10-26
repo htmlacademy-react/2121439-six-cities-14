@@ -5,9 +5,11 @@ import OfferScreenImageList from './offer-screen-component/offer-screen-image-li
 import OfferImageDataArr from './offer-screen-component/offer-screen-image-list/offer-screen-image-data';
 import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
 import OfferHostUserArr from './offer-screen-component/offer-host-user/offer-host-user-data';
-import OfferScreenReviews from './offer-screen-component/offer-screen-reviews/offer-screen-reviews';
+import OfferScreenListReviews from './offer-screen-component/offer-screen-reviews/offer-screen-list-reviews';
 import OfferScreenRivewsUserArr from './offer-screen-component/offer-screen-reviews/offer-reviews-data';
 import OfferInsideList from './offer-screen-component/offer-inside-list/offer-inside-list';
+import OfferScreenRaitingReviewData from './offer-screen-component/offer-screen-reviews/offer-reviews-raiting-data';
+import OfferScreenRaitingReview from './offer-screen-component/offer-screen-reviews/offer-screen-raiting-review';
 import OfferInsideListArr from './offer-screen-component/offer-inside-list/offer-inside-list-data';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -89,7 +91,7 @@ function OfferScreenPage(): JSX.Element {
                 </h2>
                 <ul className="reviews__list">
                   {OfferScreenRivewsUserArr.map((item) => (
-                    <OfferScreenReviews
+                    <OfferScreenListReviews
                       avatar={item.avatar}
                       userName={item.userName}
                       reviewsText={item.reviewsText}
@@ -106,90 +108,15 @@ function OfferScreenPage(): JSX.Element {
                     Your review
                   </label>
                   <div className="reviews__rating-form form__rating">
-                    <input
-                      className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="5"
-                      id="5-stars"
-                      type="radio"
-                    />
-                    <label
-                      htmlFor="5-stars"
-                      className="reviews__rating-label form__rating-label"
-                      title="perfect"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input
-                      className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="4"
-                      id="4-stars"
-                      type="radio"
-                    />
-                    <label
-                      htmlFor="4-stars"
-                      className="reviews__rating-label form__rating-label"
-                      title="good"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input
-                      className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="3"
-                      id="3-stars"
-                      type="radio"
-                    />
-                    <label
-                      htmlFor="3-stars"
-                      className="reviews__rating-label form__rating-label"
-                      title="not bad"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input
-                      className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="2"
-                      id="2-stars"
-                      type="radio"
-                    />
-                    <label
-                      htmlFor="2-stars"
-                      className="reviews__rating-label form__rating-label"
-                      title="badly"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input
-                      className="form__rating-input visually-hidden"
-                      name="rating"
-                      value="1"
-                      id="1-star"
-                      type="radio"
-                    />
-                    <label
-                      htmlFor="1-star"
-                      className="reviews__rating-label form__rating-label"
-                      title="terribly"
-                    >
-                      <svg className="form__star-image" width="37" height="33">
-                        <use xlinkHref="#icon-star"></use>
-                      </svg>
-                    </label>
+                    {OfferScreenRaitingReviewData.map((item) => (
+                      <OfferScreenRaitingReview
+                        value={item.value}
+                        id={item.id}
+                        forForm={item.forForm}
+                        title={item.title}
+                        key={item.id}
+                      />
+                    ))}
                   </div>
                   <textarea
                     className="reviews__textarea form__textarea"
