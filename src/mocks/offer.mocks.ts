@@ -33,7 +33,7 @@ interface OfferData {
   type: string;
 }
 
-const OfferCityArr: OfferData[] = [
+export const OfferCityArr: OfferData[] = [
   {
     city: {
       name: 'Dusseldorf',
@@ -126,7 +126,7 @@ const OfferCityArr: OfferData[] = [
       avatarUrl: 'img/avatar-angelina.jpg',
     },
     description:
-      "This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.",
+      'This is a place for dreamers to reset, reflect, and create. Designed with a "slow" pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.',
     location: {
       latitude: 52.385540000000006,
       longitude: 4.902976,
