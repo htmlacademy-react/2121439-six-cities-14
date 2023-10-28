@@ -1,4 +1,4 @@
-interface OfferData {
+export interface OfferData {
   bedrooms: number;
   city: {
     location: {
@@ -242,7 +242,7 @@ export const OfferCityArr: OfferData[] = [
       avatarUrl: 'img/avatar-angelina.jpg',
     },
     description:
-      'Design interior in most sympathetic area! Complitely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.',
+      'Design interior in most sympathetic area! Completely renovated, well-equipped, cosy studio in idyllic, over 100 years old wooden house. Calm street, fast connection to center and airport.',
     location: {
       latitude: 52.361540000000005,
       longitude: 4.883976,

@@ -10,6 +10,7 @@ import PrivateRoute from '../private-route/private-route';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { HelmetProvider } from 'react-helmet-async';
+
 function App(): JSX.Element {
   return (
     <HelmetProvider>
