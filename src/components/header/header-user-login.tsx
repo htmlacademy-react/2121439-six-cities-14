@@ -28,16 +28,11 @@ function HeaderUserLogin({
           </li>
         </>
       ) : (
-        <>
-          <li className="header__nav-item user">
-            <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-          </li>
-          <li className="header__nav-item">
-            <Link to={AppRoute.Login} className="header__nav-link">
-              <span className="header__signout">Sign in</span>
-            </Link>
-          </li>
-        </>
+        <li className="header__nav-item">
+          <Link to={AppRoute.Login} className="header__nav-link">
+            <span className="header__signout">Sign in</span>
+          </Link>
+        </li>
       )}
     </ul>
   );
