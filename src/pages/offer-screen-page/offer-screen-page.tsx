@@ -11,11 +11,15 @@ import OfferInsideList from './offer-screen-component/offer-inside-list/offer-in
 import OfferScreenRaitingReviewData from './offer-screen-component/offer-screen-reviews/offer-reviews-raiting-data';
 import OfferScreenRaitingReview from './offer-screen-component/offer-screen-reviews/offer-screen-raiting-review';
 import OfferInsideListArr from './offer-screen-component/offer-inside-list/offer-inside-list-data';
+import { Helmet } from 'react-helmet-async';
 import { v4 as uuidv4 } from 'uuid';
 
 function OfferScreenPage(): JSX.Element {
   return (
     <div className="page">
+      <Helmet>
+        <title>6 Cities. Offer page</title>
+      </Helmet>
       <Header />
 
       <main className="page__main page__main--offer">
@@ -157,7 +161,8 @@ function OfferScreenPage(): JSX.Element {
                     src={item.src}
                     title={item.title}
                     price={item.price}
-                    key={item.key}
+                    key={item.id}
+                    id={item.id}
                   />
                 )
               )}
