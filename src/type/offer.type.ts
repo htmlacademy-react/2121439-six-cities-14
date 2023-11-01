@@ -1,4 +1,4 @@
-export type AppProp = {
+export type AppCityProp = {
   bedrooms: number;
   city: {
     location: {

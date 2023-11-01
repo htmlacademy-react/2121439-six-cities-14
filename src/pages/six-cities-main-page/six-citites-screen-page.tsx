@@ -1,16 +1,21 @@
 import Header from '../../components/header/header';
 import CityCard from '../../components/city-card/city-card';
-import DataCardCityArr from '../../components/city-card/city-card-data';
+
 import CityLocationsList from './six-cities-main-component/city-locations-list/city-locations-list';
 import CityLocationsArr from './six-cities-main-component/city-locations-list/city-locations-data';
 import { Helmet } from 'react-helmet-async';
 import { v4 as uuidv4 } from 'uuid';
+import { AppCityProp } from '../../type/offer.type';
 
-type CountPlaces = {
+type SixCitiesPageProps = {
+  cityData: AppCityProp[];
   countOffer: number;
 };
 
-function SixCitiesScreen({ countOffer }: CountPlaces): JSX.Element {
+function SixCitiesScreen({
+  cityData,
+  countOffer,
+}: SixCitiesPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -67,12 +72,13 @@ function SixCitiesScreen({ countOffer }: CountPlaces): JSX.Element {
 
               {/* City card */}
               <div className="cities__places-list places__list tabs__content">
-                {DataCardCityArr.map(
+                {cityData.map(
                   (item): JSX.Element => (
                     <CityCard
-                      src={item.src}
+                      src={item.previewImage}
                       title={item.title}
                       price={item.price}
+                      type={item.type}
                       key={item.id}
                       id={item.id}
                     />

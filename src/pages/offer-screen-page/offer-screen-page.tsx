@@ -1,6 +1,6 @@
 import CityCard from '../../components/city-card/city-card';
 import Header from '../../components/header/header';
-import DataCardCityArr from '../../components/city-card/city-card-data';
+
 import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
 import OfferImageDataArr from './offer-screen-component/offer-screen-image-list/offer-screen-image-data';
 import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
@@ -12,9 +12,14 @@ import OfferScreenRaitingReviewData from './offer-screen-component/offer-screen-
 import OfferScreenRaitingReview from './offer-screen-component/offer-screen-reviews/offer-screen-raiting-review';
 import OfferInsideListArr from './offer-screen-component/offer-inside-list/offer-inside-list-data';
 import { Helmet } from 'react-helmet-async';
-import { v4 as uuidv4 } from 'uuid';
+import { AppCityProp } from '../../type/offer.type';
+import { v4 as uuid4 } from 'uuid';
 
-function OfferScreenPage(): JSX.Element {
+type OfferScreenProp = {
+  dataCity: AppCityProp[];
+};
+
+function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
   return (
     <div className="page">
       <Helmet>
@@ -28,7 +33,7 @@ function OfferScreenPage(): JSX.Element {
             <div className="offer__gallery">
               {OfferImageDataArr.map(
                 (item): JSX.Element => (
-                  <OfferScreenImageList src={item} key={uuidv4()} />
+                  <OfferScreenImageList src={item} key={uuid4()} />
                 )
               )}
             </div>
@@ -75,7 +80,7 @@ function OfferScreenPage(): JSX.Element {
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
                   {OfferInsideListArr.map((item) => (
-                    <OfferInsideList title={item} key={uuidv4()} />
+                    <OfferInsideList title={item} key={uuid4()} />
                   ))}
                 </ul>
               </div>
@@ -85,7 +90,7 @@ function OfferScreenPage(): JSX.Element {
                   <OfferHostUser
                     name={item.name}
                     status={item.status}
-                    key={uuidv4()}
+                    key={uuid4()}
                   />
                 ))}
               </div>
@@ -100,7 +105,7 @@ function OfferScreenPage(): JSX.Element {
                       userName={item.userName}
                       reviewsText={item.reviewsText}
                       reviewsDate={item.reviewsDate}
-                      key={uuidv4()}
+                      key={uuid4()}
                     />
                   ))}
                 </ul>
@@ -152,15 +157,16 @@ function OfferScreenPage(): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">
-              Other places in the neighbourhood
+              Other places in the neighborhood
             </h2>
             <div className="near-places__list places__list">
-              {DataCardCityArr.map(
+              {dataCity.map(
                 (item): JSX.Element => (
                   <CityCard
-                    src={item.src}
+                    src={item.previewImage}
                     title={item.title}
                     price={item.price}
+                    type={item.type}
                     key={item.id}
                     id={item.id}
                   />
