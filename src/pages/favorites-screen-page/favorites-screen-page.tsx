@@ -1,8 +1,14 @@
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import FavoritesList from './favorites-component/favorites-list';
 import { Helmet } from 'react-helmet-async';
+import { AppCityProp } from '../../type/offer.type';
 
-function FavoritesScreenPage(): JSX.Element {
+type FavoritesProp = {
+  cityData: AppCityProp[];
+};
+
+function FavoritesScreenPage({ cityData }: FavoritesProp): JSX.Element {
   return (
     <div className="page">
       <Helmet>
@@ -15,7 +21,8 @@ function FavoritesScreenPage(): JSX.Element {
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              <li className="favorites__locations-items">
+              <FavoritesList cityData={cityData} />
+              {/* <li className="favorites__locations-items">
                 <div className="favorites__locations locations locations--current">
                   <div className="locations__item">
                     <a className="locations__item-link" href="#">
@@ -179,7 +186,7 @@ function FavoritesScreenPage(): JSX.Element {
                     </div>
                   </article>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </section>
         </div>

@@ -2,10 +2,12 @@ import Header from '../../components/header/header';
 import CityCard from '../../components/city-card/city-card';
 
 import CityLocationsList from './six-cities-main-component/city-locations-list/city-locations-list';
-import CityLocationsArr from './six-cities-main-component/city-locations-list/city-locations-data';
+import CityLocationsArr from '../../mocks/city-locations-data';
 import { Helmet } from 'react-helmet-async';
 import { v4 as uuidv4 } from 'uuid';
 import { AppCityProp } from '../../type/offer.type';
+
+import { CardCityCharacter } from '../../const';
 
 type SixCitiesPageProps = {
   cityData: AppCityProp[];
@@ -81,6 +83,12 @@ function SixCitiesScreen({
                       type={item.type}
                       key={item.id}
                       id={item.id}
+                      width={CardCityCharacter.widthOffer}
+                      height={CardCityCharacter.heightOffer}
+                      classCard={CardCityCharacter.classCitiesCard}
+                      classImageWrapper={
+                        CardCityCharacter.classCitiesImageWrapper
+                      }
                     />
                   )
                 )}

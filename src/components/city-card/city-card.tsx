@@ -9,9 +9,23 @@ type CardCityProps = {
   price: number;
   id: number;
   type: string;
+  width: string;
+  height: string;
+  classCard: string;
+  classImageWrapper: string;
 };
 
-function CityCard({ src, title, price, id, type }: CardCityProps): JSX.Element {
+function CityCard({
+  src,
+  title,
+  price,
+  id,
+  type,
+  height,
+  width,
+  classCard,
+  classImageWrapper,
+}: CardCityProps): JSX.Element {
   const [active, setActive] = useState(false);
 
   const mouseHandlerEnter = () => {
@@ -24,19 +38,19 @@ function CityCard({ src, title, price, id, type }: CardCityProps): JSX.Element {
 
   return (
     <article
-      className={`cities__card place-card ${
-        active ? 'cities__card--active' : ''
+      className={`${classCard} place-card ${
+        active ? `${classCard}--active ` : ''
       }`}
       onMouseEnter={mouseHandlerEnter}
       onMouseLeave={mouseHandlerLeave}
     >
       <PremiumCardArticle />
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${classImageWrapper} place-card__image-wrapper`}>
         <img
           className="place-card__image"
           src={src}
-          width="260"
-          height="200"
+          width={width}
+          height={height}
           alt="Place image"
         />
       </div>

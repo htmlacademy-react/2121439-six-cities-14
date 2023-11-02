@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { OfferCityArr } from './mocks/offer.mocks';
+import { OfferCityArr } from './mocks/offer/offer-data';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

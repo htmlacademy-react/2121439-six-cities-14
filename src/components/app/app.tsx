@@ -28,7 +28,7 @@ function App({ dataCity }: AppProps): JSX.Element {
             path={AppRoute.Favorites}
             element={
               <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <FavoritesScreenPage />
+                <FavoritesScreenPage cityData={dataCity} />
               </PrivateRoute>
             }
           />

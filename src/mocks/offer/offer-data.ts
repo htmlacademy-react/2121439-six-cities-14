@@ -1,4 +1,4 @@
-import { AppCityProp } from '../type/offer.type';
+import { AppCityProp } from '../../type/offer.type';
 
 export const OfferCityArr: AppCityProp[] = [
   {
