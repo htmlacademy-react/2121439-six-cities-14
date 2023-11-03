@@ -1,5 +1,5 @@
-import { FormInputValueArr } from '../../mocks/form-data';
 import { ChangeEvent, useState } from 'react';
+import { formInputValues } from '../../mocks/form-data';
 
 function Form(): JSX.Element {
   const [textarea, setTextarea] = useState('');
@@ -22,7 +22,7 @@ function Form(): JSX.Element {
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {FormInputValueArr.map((item) => (
+        {formInputValues.map((item) => (
           <>
             <input
               className="form__rating-input visually-hidden"

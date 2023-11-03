@@ -1,12 +1,11 @@
-import Header from '../../components/header/header';
-import CityCard from '../../components/city-card/city-card';
-
-import CityLocationsList from './six-cities-main-component/city-locations-list/city-locations-list';
-import CityLocationsArr from '../../mocks/city-locations-data';
 import { Helmet } from 'react-helmet-async';
 import { v4 as uuidv4 } from 'uuid';
-import { AppCityProp } from '../../type/offer.type';
 
+import Header from '../../components/header/header';
+import CityCard from '../../components/city-card/city-card';
+import CityLocationsList from './six-cities-main-component/city-locations-list/city-locations-list';
+import CityLocationsArr from '../../mocks/city-locations-data';
+import { AppCityProp } from '../../type/offer.type';
 import { CardCityCharacter } from '../../const';
 
 type SixCitiesPageProps = {
@@ -14,7 +13,7 @@ type SixCitiesPageProps = {
   countOffer: number;
 };
 
-function SixCitiesScreen({
+function SixCitiesPage({
   cityData,
   countOffer,
 }: SixCitiesPageProps): JSX.Element {
@@ -83,11 +82,11 @@ function SixCitiesScreen({
                       type={item.type}
                       key={item.id}
                       id={item.id}
-                      width={CardCityCharacter.widthOffer}
-                      height={CardCityCharacter.heightOffer}
-                      classCard={CardCityCharacter.classCitiesCard}
+                      width={CardCityCharacter.WidthOffer}
+                      height={CardCityCharacter.HeightOffer}
+                      classCard={CardCityCharacter.ClassCitiesCard}
                       classImageWrapper={
-                        CardCityCharacter.classCitiesImageWrapper
+                        CardCityCharacter.ClassCitiesImageWrapper
                       }
                     />
                   )
@@ -104,4 +103,4 @@ function SixCitiesScreen({
   );
 }
 
-export default SixCitiesScreen;
+export default SixCitiesPage;

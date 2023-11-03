@@ -1,11 +1,11 @@
-interface OfferScreenRivewsUser {
+interface offerScreenReviewUser {
   avatar: string;
   userName: string;
   reviewsText: string;
   reviewsDate: string;
 }
 
-const OfferScreenRivewsUserArr: OfferScreenRivewsUser[] = [
+const offerScreenReviewUsers: offerScreenReviewUser[] = [
   {
     avatar: 'img/avatar-max.jpg',
     userName: 'Max',
@@ -15,4 +15,4 @@ const OfferScreenRivewsUserArr: OfferScreenRivewsUser[] = [
   },
 ];
 
-export default OfferScreenRivewsUserArr;
+export default offerScreenReviewUsers;

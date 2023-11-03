@@ -1,7 +1,8 @@
-import PremiumCardArticle from './city-card-component/card-premium-article';
-import CityCardRating from './city-card-component/rating';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import PremiumCardArticle from './city-card-component/card-premium-article';
+import CityCardRating from './city-card-component/city-card-rating';
 
 type CardCityProps = {
   src: string;

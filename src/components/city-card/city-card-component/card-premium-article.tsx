@@ -1,4 +1,4 @@
-function PremiumCardArticle(): JSX.Element {
+function CityCardPremium(): JSX.Element {
   return (
     <div className="place-card__mark">
       <span>Premium</span>
@@ -6,4 +6,4 @@ function PremiumCardArticle(): JSX.Element {
   );
 }
 
-export default PremiumCardArticle;
+export default CityCardPremium;

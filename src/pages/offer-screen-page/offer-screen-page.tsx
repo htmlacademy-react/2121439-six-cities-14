@@ -1,6 +1,7 @@
+import { Helmet } from 'react-helmet-async';
+import { v4 as uuid4 } from 'uuid';
 import CityCard from '../../components/city-card/city-card';
 import Header from '../../components/header/header';
-
 import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
 import OfferImageDataArr from '../../mocks/offer/offer-screen-image-data';
 import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
@@ -8,12 +9,9 @@ import OfferHostUserArr from '../../mocks/offer/offer-host-user-data';
 import OfferScreenListReviews from './offer-screen-component/offer-screen-reviews/offer-screen-list-reviews';
 import OfferScreenReviewsUserArr from '../../mocks/reviews/offer-reviews-data';
 import OfferInsideList from './offer-screen-component/offer-inside-list/offer-inside-list';
-
 import OfferInsideListArr from '../../mocks/offer/offer-inside-list-data';
 import Form from '../../components/form/form';
-import { Helmet } from 'react-helmet-async';
 import { AppCityProp } from '../../type/offer.type';
-import { v4 as uuid4 } from 'uuid';
 import { CardCityCharacter } from '../../const';
 
 type OfferScreenProp = {
@@ -132,10 +130,10 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
                     type={item.type}
                     key={item.id}
                     id={item.id}
-                    classCard={CardCityCharacter.classNearCard}
-                    classImageWrapper={CardCityCharacter.classNearImageWrapper}
-                    width={CardCityCharacter.widthOffer}
-                    height={CardCityCharacter.heightOffer}
+                    classCard={CardCityCharacter.ClassNearCard}
+                    classImageWrapper={CardCityCharacter.ClassNearImageWrapper}
+                    width={CardCityCharacter.WidthOffer}
+                    height={CardCityCharacter.HeightOffer}
                   />
                 )
               )}

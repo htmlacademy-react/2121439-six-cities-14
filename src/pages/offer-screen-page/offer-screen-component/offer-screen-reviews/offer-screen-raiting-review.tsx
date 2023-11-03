@@ -5,7 +5,7 @@ type RatingProps = {
   title: string;
 };
 
-function OfferScreenRaitingReview({
+function OfferScreenRatingReview({
   value,
   id,
   forForm,
@@ -33,4 +33,4 @@ function OfferScreenRaitingReview({
   );
 }
 
-export default OfferScreenRaitingReview;
+export default OfferScreenRatingReview;

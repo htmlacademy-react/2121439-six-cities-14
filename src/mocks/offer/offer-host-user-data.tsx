@@ -1,9 +1,9 @@
-interface OfferHostUserInfo {
+interface offerHostUserInfo {
   name: string;
   status: string;
 }
 
-const OfferHostUserArr: OfferHostUserInfo[] = [
+const OfferHostUserArr: offerHostUserInfo[] = [
   {
     name: 'Angelina',
     status: 'Pro',
