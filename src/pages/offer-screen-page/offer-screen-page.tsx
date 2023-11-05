@@ -1,20 +1,26 @@
 import CityCard from '../../components/city-card/city-card';
 import Header from '../../components/header/header';
-import DataCardCityArr from '../../components/city-card/city-card-data';
-import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
-import OfferImageDataArr from './offer-screen-component/offer-screen-image-list/offer-screen-image-data';
-import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
-import OfferHostUserArr from './offer-screen-component/offer-host-user/offer-host-user-data';
-import OfferScreenListReviews from './offer-screen-component/offer-screen-reviews/offer-screen-list-reviews';
-import OfferScreenRivewsUserArr from './offer-screen-component/offer-screen-reviews/offer-reviews-data';
-import OfferInsideList from './offer-screen-component/offer-inside-list/offer-inside-list';
-import OfferScreenRaitingReviewData from './offer-screen-component/offer-screen-reviews/offer-reviews-raiting-data';
-import OfferScreenRaitingReview from './offer-screen-component/offer-screen-reviews/offer-screen-raiting-review';
-import OfferInsideListArr from './offer-screen-component/offer-inside-list/offer-inside-list-data';
-import { Helmet } from 'react-helmet-async';
-import { v4 as uuidv4 } from 'uuid';
 
-function OfferScreenPage(): JSX.Element {
+import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
+import OfferImageDataArr from '../../mocks/offer/offer-screen-image-data';
+import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
+import OfferHostUserArr from '../../mocks/offer/offer-host-user-data';
+import OfferScreenListReviews from './offer-screen-component/offer-screen-reviews/offer-screen-list-reviews';
+import OfferScreenReviewsUserArr from '../../mocks/reviews/offer-reviews-data';
+import OfferInsideList from './offer-screen-component/offer-inside-list/offer-inside-list';
+
+import OfferInsideListArr from '../../mocks/offer/offer-inside-list-data';
+import Form from '../../components/form/form';
+import { Helmet } from 'react-helmet-async';
+import { AppCityProp } from '../../type/offer.type';
+import { v4 as uuid4 } from 'uuid';
+import { CardCityCharacter } from '../../const';
+
+type OfferScreenProp = {
+  dataCity: AppCityProp[];
+};
+
+function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
   return (
     <div className="page">
       <Helmet>
@@ -28,7 +34,7 @@ function OfferScreenPage(): JSX.Element {
             <div className="offer__gallery">
               {OfferImageDataArr.map(
                 (item): JSX.Element => (
-                  <OfferScreenImageList src={item} key={uuidv4()} />
+                  <OfferScreenImageList src={item} key={uuid4()} />
                 )
               )}
             </div>
@@ -75,7 +81,7 @@ function OfferScreenPage(): JSX.Element {
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
                   {OfferInsideListArr.map((item) => (
-                    <OfferInsideList title={item} key={uuidv4()} />
+                    <OfferInsideList title={item} key={uuid4()} />
                   ))}
                 </ul>
               </div>
@@ -85,7 +91,7 @@ function OfferScreenPage(): JSX.Element {
                   <OfferHostUser
                     name={item.name}
                     status={item.status}
-                    key={uuidv4()}
+                    key={uuid4()}
                   />
                 ))}
               </div>
@@ -94,56 +100,18 @@ function OfferScreenPage(): JSX.Element {
                   Reviews &middot; <span className="reviews__amount">1</span>
                 </h2>
                 <ul className="reviews__list">
-                  {OfferScreenRivewsUserArr.map((item) => (
+                  {OfferScreenReviewsUserArr.map((item) => (
                     <OfferScreenListReviews
                       avatar={item.avatar}
                       userName={item.userName}
                       reviewsText={item.reviewsText}
                       reviewsDate={item.reviewsDate}
-                      key={uuidv4()}
+                      key={uuid4()}
                     />
                   ))}
                 </ul>
-                <form className="reviews__form form" action="#" method="post">
-                  <label
-                    className="reviews__label form__label"
-                    htmlFor="review"
-                  >
-                    Your review
-                  </label>
-                  <div className="reviews__rating-form form__rating">
-                    {OfferScreenRaitingReviewData.map((item) => (
-                      <OfferScreenRaitingReview
-                        value={item.value}
-                        id={item.id}
-                        forForm={item.forForm}
-                        title={item.title}
-                        key={item.id}
-                      />
-                    ))}
-                  </div>
-                  <textarea
-                    className="reviews__textarea form__textarea"
-                    id="review"
-                    name="review"
-                    placeholder="Tell how was your stay, what you like and what can be improved"
-                  />
-                  <div className="reviews__button-wrapper">
-                    <p className="reviews__help">
-                      To submit review please make sure to set{' '}
-                      <span className="reviews__star">rating</span> and describe
-                      your stay with at least{' '}
-                      <b className="reviews__text-amount">50 characters</b>.
-                    </p>
-                    <button
-                      className="reviews__submit form__submit button"
-                      type="submit"
-                      disabled
-                    >
-                      Submit
-                    </button>
-                  </div>
-                </form>
+
+                <Form />
               </section>
             </div>
           </div>
@@ -152,17 +120,22 @@ function OfferScreenPage(): JSX.Element {
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">
-              Other places in the neighbourhood
+              Other places in the neighborhood
             </h2>
             <div className="near-places__list places__list">
-              {DataCardCityArr.map(
+              {dataCity.map(
                 (item): JSX.Element => (
                   <CityCard
-                    src={item.src}
+                    src={item.previewImage}
                     title={item.title}
                     price={item.price}
+                    type={item.type}
                     key={item.id}
                     id={item.id}
+                    classCard={CardCityCharacter.classNearCard}
+                    classImageWrapper={CardCityCharacter.classNearImageWrapper}
+                    width={CardCityCharacter.widthOffer}
+                    height={CardCityCharacter.heightOffer}
                   />
                 )
               )}

@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-//Импорт pages для роутера
 import SixCitiesScreen from '../../pages/six-cities-main-page/six-citites-screen-page';
 import LoginScreenPage from '../../pages/login-screen-page/login-screen-page';
 import OfferScreenPage from '../../pages/offer-screen-page/offer-screen-page';
@@ -10,25 +9,34 @@ import PrivateRoute from '../private-route/private-route';
 
 import { AppRoute, AuthorizationStatus } from '../../const';
 import { HelmetProvider } from 'react-helmet-async';
-function App(): JSX.Element {
+
+import { AppCityProp } from '../../type/offer.type';
+type AppProps = {
+  dataCity: AppCityProp[];
+};
+
+function App({ dataCity }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<SixCitiesScreen countOffer={200} />}
+            element={<SixCitiesScreen countOffer={300} cityData={dataCity} />}
           />
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                <FavoritesScreenPage />
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <FavoritesScreenPage cityData={dataCity} />
               </PrivateRoute>
             }
           />
           <Route path={AppRoute.Login} element={<LoginScreenPage />} />
-          <Route path={AppRoute.Offer} element={<OfferScreenPage />} />
+          <Route
+            path={AppRoute.Offer}
+            element={<OfferScreenPage dataCity={dataCity} />}
+          />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

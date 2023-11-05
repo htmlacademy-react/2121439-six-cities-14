@@ -1,24 +1,56 @@
 import PremiumCardArticle from './city-card-component/card-premium-article';
-
+import CityCardRating from './city-card-component/rating';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 type CardCityProps = {
   src: string;
   title: string;
   price: number;
-  id: string;
+  id: number;
+  type: string;
+  width: string;
+  height: string;
+  classCard: string;
+  classImageWrapper: string;
 };
 
-function CityCard({ src, title, price, id }: CardCityProps): JSX.Element {
+function CityCard({
+  src,
+  title,
+  price,
+  id,
+  type,
+  height,
+  width,
+  classCard,
+  classImageWrapper,
+}: CardCityProps): JSX.Element {
+  const [active, setActive] = useState(false);
+
+  const mouseHandlerEnter = () => {
+    setActive(true);
+  };
+
+  const mouseHandlerLeave = () => {
+    setActive(false);
+  };
+
   return (
-    <article className="cities__card place-card">
+    <article
+      className={`${classCard} place-card ${
+        active ? `${classCard}--active ` : ''
+      }`}
+      onMouseEnter={mouseHandlerEnter}
+      onMouseLeave={mouseHandlerLeave}
+    >
       <PremiumCardArticle />
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${classImageWrapper} place-card__image-wrapper`}>
         <img
           className="place-card__image"
           src={src}
-          width="260"
-          height="200"
+          width={width}
+          height={height}
           alt="Place image"
         />
       </div>
@@ -36,15 +68,12 @@ function CityCard({ src, title, price, id }: CardCityProps): JSX.Element {
           </button>
         </div>
         <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: '80%' }}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
+          <CityCardRating />
         </div>
         <h2 className="place-card__name">
           <Link to={`/offer/:${id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{type}</p>
       </div>
     </article>
   );
