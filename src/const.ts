@@ -23,3 +23,6 @@ export enum CardCityCharacter {
   ClassNearCard = 'near-places__card',
   ClassNearImageWrapper = 'near-places__image-wrapper',
 }
+
+export const MIN_COMMENT_LENGTH = 50;
+export const MAX_COMMENT_LENGTH = 260;

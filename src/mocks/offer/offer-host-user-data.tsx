@@ -3,11 +3,11 @@ interface offerHostUserInfo {
   status: string;
 }
 
-const OfferHostUserArr: offerHostUserInfo[] = [
+const offerHostUsers: offerHostUserInfo[] = [
   {
     name: 'Angelina',
     status: 'Pro',
   },
 ];
 
-export default OfferHostUserArr;
+export default offerHostUsers;
