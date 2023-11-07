@@ -1,4 +1,4 @@
-export interface FormInputValue {
+export interface formInputValue {
   id: string;
   title: string;
 }

@@ -26,10 +26,10 @@ function FavoritesList({ cityData }: FavoritesListProp): JSX.Element {
               type={item.type}
               key={item.id}
               id={item.id}
-              width={CardCityCharacter.widthOffer}
-              height={CardCityCharacter.heightOffer}
-              classCard={CardCityCharacter.classCitiesCard}
-              classImageWrapper={CardCityCharacter.classCitiesImageWrapper}
+              width={CardCityCharacter.WidthOffer}
+              height={CardCityCharacter.HeightOffer}
+              classCard={CardCityCharacter.ClassCitiesCard}
+              classImageWrapper={CardCityCharacter.ClassCitiesImageWrapper}
             />
           )
         )}

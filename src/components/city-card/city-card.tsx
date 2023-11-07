@@ -1,7 +1,8 @@
-import PremiumCardArticle from './city-card-component/card-premium-article';
-import CityCardRating from './city-card-component/rating';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import PremiumCardArticle from './city-card-component/card-premium-article';
+import CityCardRating from './city-card-component/city-card-rating';
 
 type CardCityProps = {
   src: string;
@@ -71,7 +72,7 @@ function CityCard({
           <CityCardRating />
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/:${id}`}>{title}</Link>
+          <Link to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

@@ -1,4 +1,4 @@
-const OfferImageDataArr: string[] = [
+const offerCityImages: string[] = [
   'img/room.jpg',
   'img/apartment-01.jpg',
   'img/apartment-02.jpg',
@@ -7,4 +7,4 @@ const OfferImageDataArr: string[] = [
   'img/apartment-01.jpg',
 ];
 
-export default OfferImageDataArr;
+export default offerCityImages;

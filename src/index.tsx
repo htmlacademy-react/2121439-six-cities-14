@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
-import { OfferCityArr } from './mocks/offer/offer-data';
+import { cityData } from './mocks/offer/city-data';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -9,6 +9,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App dataCity={OfferCityArr} />
+    <App dataCity={cityData} />
   </React.StrictMode>
 );

@@ -1,13 +1,13 @@
-interface OfferHostUserInfo {
+interface offerHostUserInfo {
   name: string;
   status: string;
 }
 
-const OfferHostUserArr: OfferHostUserInfo[] = [
+const offerHostUsers: offerHostUserInfo[] = [
   {
     name: 'Angelina',
     status: 'Pro',
   },
 ];
 
-export default OfferHostUserArr;
+export default offerHostUsers;
