@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import SixCitiesScreen from '../../pages/six-cities-main-page/six-citites-screen-page';
+import SixCitiesMainPage from '../../pages/six-cities-main-page/six-cities-main-page';
 import LoginScreenPage from '../../pages/login-screen-page/login-screen-page';
 import OfferScreenPage from '../../pages/offer-screen-page/offer-screen-page';
 import FavoritesScreenPage from '../../pages/favorites-screen-page/favorites-screen-page';
@@ -22,7 +22,7 @@ function App({ dataCity }: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<SixCitiesScreen countOffer={300} cityData={dataCity} />}
+            element={<SixCitiesMainPage countOffer={300} cityData={dataCity} />}
           />
           <Route
             path={AppRoute.Favorites}

@@ -14,7 +14,7 @@ type SixCitiesPageProps = {
   countOffer: number;
 };
 
-function SixCitiesScreen({
+function SixCitiesMainPage({
   cityData,
   countOffer,
 }: SixCitiesPageProps): JSX.Element {
@@ -104,4 +104,4 @@ function SixCitiesScreen({
   );
 }
 
-export default SixCitiesScreen;
+export default SixCitiesMainPage;
