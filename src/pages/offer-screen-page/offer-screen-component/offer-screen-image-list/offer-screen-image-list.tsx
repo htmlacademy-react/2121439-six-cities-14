@@ -1,8 +1,8 @@
-type SrcImage = {
+type SrcImageProps = {
   src: string;
 };
 
-function OfferScreenImageList({ src }: SrcImage): JSX.Element {
+function OfferScreenImageList({ src }: SrcImageProps): JSX.Element {
   return (
     <div className="offer__image-wrapper">
       <img className="offer__image" src={src} />

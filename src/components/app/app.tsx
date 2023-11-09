@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-
 import SixCitiesMainPage from '../../pages/six-cities-screen-page/six-cities-main-page';
-
 import LoginScreenPage from '../../pages/login-screen-page/login-screen-page';
 import OfferScreenPage from '../../pages/offer-screen-page/offer-screen-page';
 import FavoritesScreenPage from '../../pages/favorites-screen-page/favorites-screen-page';

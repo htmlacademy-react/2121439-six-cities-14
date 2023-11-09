@@ -82,6 +82,7 @@ function SixCitiesMainPage({
                       type={item.type}
                       key={item.id}
                       id={item.id}
+                      isPremium={item.isPremium}
                       width={CardCityCharacter.WidthOffer}
                       height={CardCityCharacter.HeightOffer}
                       classCard={CardCityCharacter.ClassCitiesCard}

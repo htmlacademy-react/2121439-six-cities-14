@@ -29,7 +29,7 @@ export const cityData: AppCityProp[] = [
     ],
     title: 'Waterfront with extraordinary view',
     isFavorite: false,
-    isPremium: false,
+    isPremium: true,
     rating: 4.8,
     type: 'room',
     bedrooms: 1,

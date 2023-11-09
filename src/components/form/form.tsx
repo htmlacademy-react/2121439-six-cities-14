@@ -1,8 +1,10 @@
 import { ChangeEvent, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid4 } from 'uuid';
+
 import { formInputValues } from '../../mocks/form-data';
 import { MIN_COMMENT_LENGTH } from '../../const';
 import { MAX_COMMENT_LENGTH } from '../../const';
+import React from 'react';
 
 function Form(): JSX.Element {
   const [textarea, setTextarea] = useState<string>('');
@@ -28,7 +30,7 @@ function Form(): JSX.Element {
       </label>
       <div className="reviews__rating-form form__rating">
         {formInputValues.map((item) => (
-          <>
+          <React.Fragment key={uuid4()}>
             <input
               className="form__rating-input visually-hidden"
               name="rating"
@@ -36,6 +38,7 @@ function Form(): JSX.Element {
               id={`${item.id}-stars`}
               type="radio"
               onChange={handleInputChange}
+              key={item.id}
             />
             <label
               htmlFor={`${item.id}-stars`}
@@ -46,7 +49,7 @@ function Form(): JSX.Element {
                 <use xlinkHref="#icon-star"></use>
               </svg>
             </label>
-          </>
+          </React.Fragment>
         ))}
       </div>
 
@@ -61,7 +64,7 @@ function Form(): JSX.Element {
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set{' '}
+          To submit review please make sure to set
           <span className="reviews__star">rating</span> and describe your stay
           with at least <b className="reviews__text-amount">50 characters</b>.
         </p>

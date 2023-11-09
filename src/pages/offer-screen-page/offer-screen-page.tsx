@@ -3,22 +3,34 @@ import { v4 as uuid4 } from 'uuid';
 import CityCard from '../../components/city-card/city-card';
 import Header from '../../components/header/header';
 import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
-import { offerCityImages } from '../../mocks/offer/offer-screen-image-data';
 import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
 import { offerHostUsers } from '../../mocks/offer/offer-host-user-data';
 import OfferScreenListReviews from './offer-screen-component/offer-screen-reviews/offer-screen-list-reviews';
 import { offerScreenReviewUsers } from '../../mocks/reviews/offer-reviews-data';
 import OfferInsideList from './offer-screen-component/offer-inside-list/offer-inside-list';
-import { offerInsideData } from '../../mocks/offer/offer-inside-list-data';
 import Form from '../../components/form/form';
 import { AppCityProp } from '../../type/offer.type';
 import { CardCityCharacter } from '../../const';
+import { Navigate, useParams } from 'react-router-dom';
+import CityCardPremium from '../../components/city-card/city-card-component/card-premium-article';
 
 type OfferScreenProp = {
   dataCity: AppCityProp[];
 };
 
 function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
+  const { id } = useParams();
+  let dataIndex = 0;
+  if (id) {
+    const parsedIndex = parseInt(id, 20);
+    if (parsedIndex < dataCity.length) {
+      dataIndex = parsedIndex;
+    } else {
+      return <Navigate to="not-found-screen" />;
+    }
+  }
+
+  const data = dataCity[dataIndex];
   return (
     <div className="page">
       <Helmet>
@@ -30,22 +42,16 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {offerCityImages.map(
-                (item): JSX.Element => (
-                  <OfferScreenImageList src={item} key={uuid4()} />
-                )
-              )}
+              {data.images.map((item) => (
+                <OfferScreenImageList src={item} key={uuid4()} />
+              ))}
             </div>
           </div>
           <div className="offer__container container">
             <div className="offer__wrapper">
-              <div className="offer__mark">
-                <span>Premium</span>
-              </div>
+              <CityCardPremium premium={data.isPremium} className="offer" />
               <div className="offer__name-wrapper">
-                <h1 className="offer__name">
-                  Beautiful &amp; luxurious studio at great location
-                </h1>
+                <h1 className="offer__name">{data.title}</h1>
                 <button className="offer__bookmark-button button" type="button">
                   <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
@@ -62,24 +68,24 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  Apartment
+                  {data.type}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
-                  3 Bedrooms
+                  {`${data.bedrooms} Bedrooms`}
                 </li>
                 <li className="offer__feature offer__feature--adults">
-                  Max 4 adults
+                  {`Max ${data.maxAdults} adults`}
                 </li>
               </ul>
               <div className="offer__price">
-                <b className="offer__price-value">&euro;120</b>
+                <b className="offer__price-value">{data.price}</b>
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
-                  {offerInsideData.map((item) => (
-                    <OfferInsideList title={item} key={uuid4()} />
+                  {data.goods.map((good) => (
+                    <OfferInsideList title={good} key={uuid4()} />
                   ))}
                 </ul>
               </div>
@@ -91,7 +97,7 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
                     name={info.name}
                     isPro={info.isPro}
                     id={info.id}
-                    key={info.id}
+                    key={uuid4()}
                   />
                 ))}
               </div>
@@ -136,6 +142,7 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
                     classImageWrapper={CardCityCharacter.ClassNearImageWrapper}
                     width={CardCityCharacter.WidthOffer}
                     height={CardCityCharacter.HeightOffer}
+                    isPremium={city.isPremium}
                   />
                 )
               )}
