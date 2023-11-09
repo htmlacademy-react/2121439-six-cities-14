@@ -1,25 +1,24 @@
 import OfferHostUserComment from './offer-host-user-comment';
+import { Host } from '../../../../const';
 
-type OfferUserProps = {
-  name: string;
-  status: string;
-};
-
-function OfferHostUser({ name, status }: OfferUserProps): JSX.Element {
+function OfferHostUser({ id, isPro, avatarUrl, name }: Host): JSX.Element {
   return (
     <>
       <div className="offer__host-user user">
-        <div className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper">
+        <div
+          className="offer__avatar-wrapper offer__avatar-wrapper--pro user__avatar-wrapper"
+          id={`${id}`}
+        >
           <img
             className="offer__avatar user__avatar"
-            src="img/avatar-angelina.jpg"
+            src={avatarUrl}
             width="74"
             height="74"
             alt="Host avatar"
           />
         </div>
         <span className="offer__user-name">{name}</span>
-        <span className="offer__user-status">{status}</span>
+        <span className="offer__user-status">{isPro ? 'Pro' : ''}</span>
       </div>
       <div className="offer__description">
         <OfferHostUserComment

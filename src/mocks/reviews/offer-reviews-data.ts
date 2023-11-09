@@ -5,7 +5,7 @@ interface offerScreenReviewUser {
   reviewsDate: string;
 }
 
-const offerScreenReviewUsers: offerScreenReviewUser[] = [
+export const offerScreenReviewUsers: offerScreenReviewUser[] = [
   {
     avatar: 'img/avatar-max.jpg',
     userName: 'Max',
@@ -14,5 +14,3 @@ const offerScreenReviewUsers: offerScreenReviewUser[] = [
     reviewsDate: '2019-04-24',
   },
 ];
-
-export default offerScreenReviewUsers;

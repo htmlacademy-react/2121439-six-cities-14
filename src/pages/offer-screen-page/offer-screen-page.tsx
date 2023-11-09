@@ -3,13 +3,13 @@ import { v4 as uuid4 } from 'uuid';
 import CityCard from '../../components/city-card/city-card';
 import Header from '../../components/header/header';
 import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
-import offerCityImages from '../../mocks/offer/offer-screen-image-data';
+import { offerCityImages } from '../../mocks/offer/offer-screen-image-data';
 import OfferHostUser from './offer-screen-component/offer-host-user/offer-host-user';
-import offerHostUsers from '../../mocks/offer/offer-host-user-data';
+import { offerHostUsers } from '../../mocks/offer/offer-host-user-data';
 import OfferScreenListReviews from './offer-screen-component/offer-screen-reviews/offer-screen-list-reviews';
-import offerScreenReviewUsers from '../../mocks/reviews/offer-reviews-data';
+import { offerScreenReviewUsers } from '../../mocks/reviews/offer-reviews-data';
 import OfferInsideList from './offer-screen-component/offer-inside-list/offer-inside-list';
-import offerInsideData from '../../mocks/offer/offer-inside-list-data';
+import { offerInsideData } from '../../mocks/offer/offer-inside-list-data';
 import Form from '../../components/form/form';
 import { AppCityProp } from '../../type/offer.type';
 import { CardCityCharacter } from '../../const';
@@ -85,11 +85,13 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
               </div>
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
-                {offerHostUsers.map((item) => (
+                {offerHostUsers.map((info) => (
                   <OfferHostUser
-                    name={item.name}
-                    status={item.status}
-                    key={uuid4()}
+                    avatarUrl={info.avatarUrl}
+                    name={info.name}
+                    isPro={info.isPro}
+                    id={info.id}
+                    key={info.id}
                   />
                 ))}
               </div>
@@ -122,14 +124,14 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
             </h2>
             <div className="near-places__list places__list">
               {dataCity.map(
-                (item): JSX.Element => (
+                (city): JSX.Element => (
                   <CityCard
-                    src={item.previewImage}
-                    title={item.title}
-                    price={item.price}
-                    type={item.type}
-                    key={item.id}
-                    id={item.id}
+                    src={city.previewImage}
+                    title={city.title}
+                    price={city.price}
+                    type={city.type}
+                    key={city.id}
+                    id={city.id}
                     classCard={CardCityCharacter.ClassNearCard}
                     classImageWrapper={CardCityCharacter.ClassNearImageWrapper}
                     width={CardCityCharacter.WidthOffer}

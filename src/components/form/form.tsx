@@ -23,11 +23,7 @@ function Form(): JSX.Element {
 
   return (
     <form className="reviews__form form" action="#" method="post">
-      <label
-        className="reviews__label form__label"
-        htmlFor="review"
-        key={uuidv4()}
-      >
+      <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
@@ -39,14 +35,12 @@ function Form(): JSX.Element {
               value={item.title}
               id={`${item.id}-stars`}
               type="radio"
-              key={uuidv4()}
               onChange={handleInputChange}
             />
             <label
               htmlFor={`${item.id}-stars`}
               className="reviews__rating-label form__rating-label"
               title={item.title}
-              key={uuidv4()}
             >
               <svg className="form__star-image" width="37" height="33">
                 <use xlinkHref="#icon-star"></use>

@@ -2,7 +2,7 @@ type CityName = {
   name: string;
 };
 
-function CityLocationsList({ name }: CityName) {
+function CityLocationList({ name }: CityName) {
   return (
     <li className="locations__item">
       <a className="locations__item-link tabs__item" href="#">
@@ -12,4 +12,4 @@ function CityLocationsList({ name }: CityName) {
   );
 }
 
-export default CityLocationsList;
+export default CityLocationList;

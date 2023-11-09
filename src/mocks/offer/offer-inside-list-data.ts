@@ -1,4 +1,4 @@
-const offerInsideData: string[] = [
+export const offerInsideData: string[] = [
   'Wi-Fi',
   'Washing machine',
   'Towels',
@@ -10,5 +10,3 @@ const offerInsideData: string[] = [
   'Cabel TV',
   'Fridge',
 ];
-
-export default offerInsideData;

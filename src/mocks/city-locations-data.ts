@@ -1,4 +1,4 @@
-const cityLocationsData: string[] = [
+export const cityLocationsData: string[] = [
   'Paris',
   'Cologne',
   'Brussels',
@@ -6,5 +6,3 @@ const cityLocationsData: string[] = [
   'Hamburg',
   'Dusseldorf',
 ];
-
-export default cityLocationsData;

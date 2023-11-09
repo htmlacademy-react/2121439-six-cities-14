@@ -9,6 +9,7 @@ import FavoritesScreenPage from '../../pages/favorites-screen-page/favorites-scr
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { AppCityProp } from '../../type/offer.type';
+import { COUNTER_OFFERS } from '../../const';
 import { AppRoute, AuthorizationStatus } from '../../const';
 
 type AppProps = {
@@ -22,7 +23,12 @@ function App({ dataCity }: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<SixCitiesMainPage countOffer={300} cityData={dataCity} />}
+            element={
+              <SixCitiesMainPage
+                countOffer={COUNTER_OFFERS}
+                cityData={dataCity}
+              />
+            }
           />
           <Route
             path={AppRoute.Favorites}

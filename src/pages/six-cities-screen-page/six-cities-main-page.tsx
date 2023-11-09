@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import Header from '../../components/header/header';
 import CityCard from '../../components/city-card/city-card';
-import CityLocationsList from './six-cities-main-component/city-locations-list/city-locations-list';
-import CityLocationsArr from '../../mocks/city-locations-data';
+import CityLocationList from './six-cities-main-component/city-locations-list/city-location-list';
+import { cityLocationsData } from '../../mocks/city-locations-data';
 import { AppCityProp } from '../../type/offer.type';
 import { CardCityCharacter } from '../../const';
 
@@ -29,9 +29,9 @@ function SixCitiesMainPage({
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {CityLocationsArr.map(
+              {cityLocationsData.map(
                 (cityName): JSX.Element => (
-                  <CityLocationsList name={cityName} key={uuidv4()} />
+                  <CityLocationList name={cityName} key={uuidv4()} />
                 )
               )}
             </ul>
@@ -93,9 +93,7 @@ function SixCitiesMainPage({
                 )}
               </div>
             </section>
-            <div className="cities__right-section">
-              <section className="cities__map map"></section>
-            </div>
+            <div className="cities__right-section"></div>
           </div>
         </div>
       </main>
