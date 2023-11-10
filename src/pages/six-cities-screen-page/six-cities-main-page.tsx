@@ -6,7 +6,8 @@ import CityCard from '../../components/city-card/city-card';
 import CityLocationList from './six-cities-main-component/city-locations-list/city-location-list';
 import { cityLocationsData } from '../../mocks/city-locations-data';
 import { AppCityProp } from '../../type/offer.type';
-import { CardCityCharacter } from '../../const';
+import { ActiveCityMap, CardCityCharacter } from '../../const';
+import Map from '../../components/map/map';
 
 type SixCitiesPageProps = {
   cityData: AppCityProp[];
@@ -71,7 +72,6 @@ function SixCitiesMainPage({
                 </ul>
               </form>
 
-              {/* City card */}
               <div className="cities__places-list places__list tabs__content">
                 {cityData.map(
                   (item): JSX.Element => (
@@ -94,7 +94,13 @@ function SixCitiesMainPage({
                 )}
               </div>
             </section>
-            <div className="cities__right-section"></div>
+            <div className="cities__right-section">
+              <Map
+                location={ActiveCityMap.Amsterdam.location}
+                block="cities"
+                selectedPoint={ActiveCityMap.Amsterdam.name}
+              />
+            </div>
           </div>
         </div>
       </main>

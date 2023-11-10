@@ -13,6 +13,8 @@ import { AppCityProp } from '../../type/offer.type';
 import { CardCityCharacter } from '../../const';
 import { Navigate, useParams } from 'react-router-dom';
 import CityCardPremium from '../../components/city-card/city-card-component/card-premium-article';
+import Map from '../../components/map/map';
+import { ActiveCityMap } from '../../const';
 
 type OfferScreenProp = {
   dataCity: AppCityProp[];
@@ -121,7 +123,11 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="offer__map map"></section>
+          <Map
+            location={ActiveCityMap.Amsterdam.location}
+            block="offer"
+            selectedPoint={ActiveCityMap.Amsterdam.name}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
