@@ -30,6 +30,7 @@ function FavoritesList({ cityData }: FavoritesListProp): JSX.Element {
               height={CardCityCharacter.HeightOffer}
               classCard={CardCityCharacter.ClassCitiesCard}
               classImageWrapper={CardCityCharacter.ClassCitiesImageWrapper}
+              isPremium={item.isPremium}
             />
           )
         )}
