@@ -13,6 +13,17 @@ type MapProps = {
   selectedPoint: Point | undefined;
   block: string;
 };
+const defaultCustomIcon = new Icon({
+  iconUrl: URL_MARKER_DEFAULT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
+const currentCustomIcon = new Icon({
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
 
 function Map({
   block,
@@ -22,17 +33,7 @@ function Map({
 }: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, location);
-  const defaultCustomIcon = new Icon({
-    iconUrl: URL_MARKER_DEFAULT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
 
-  const currentCustomIcon = new Icon({
-    iconUrl: URL_MARKER_CURRENT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
   useEffect(() => {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
@@ -56,11 +57,7 @@ function Map({
       };
     }
   }, [map, points, selectedPoint]);
-  return (
-    <>
-      <section className={`${block}__map map`} ref={mapRef}></section>
-    </>
-  );
+  return <section className={`${block}__map map`} ref={mapRef}></section>;
 }
 
 export default Map;
