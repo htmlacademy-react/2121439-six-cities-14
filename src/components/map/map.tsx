@@ -3,17 +3,23 @@ import { useEffect, useRef } from 'react';
 import 'leaflet/dist/leaflet.css';
 
 import useMap from '../hooks/useMap';
+import { Points, Point } from '../../type/map.type';
 import { LocationType } from '../../const';
 import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
-import { PointData } from '../../const';
 
 type MapProps = {
-  block: string;
   location: LocationType;
-  selectedPoint: string;
+  points: Points;
+  selectedPoint: Point | undefined;
+  block: string;
 };
 
-function Map({ location, block, selectedPoint }: MapProps): JSX.Element {
+function Map({
+  block,
+  location,
+  selectedPoint,
+  points,
+}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, location);
   const defaultCustomIcon = new Icon({
@@ -30,15 +36,15 @@ function Map({ location, block, selectedPoint }: MapProps): JSX.Element {
   useEffect(() => {
     if (map) {
       const markerLayer = layerGroup().addTo(map);
-      PointData.forEach((point) => {
+      points.map((point) => {
         const marker = new Marker({
-          lat: point.latitude,
-          lng: point.longitude,
+          lat: point.lat,
+          lng: point.lng,
         });
 
         marker
           .setIcon(
-            selectedPoint !== undefined && point.title === selectedPoint
+            selectedPoint !== undefined && point.title === selectedPoint.title
               ? currentCustomIcon
               : defaultCustomIcon
           )
@@ -49,8 +55,12 @@ function Map({ location, block, selectedPoint }: MapProps): JSX.Element {
         map.removeLayer(markerLayer);
       };
     }
-  }, [map, PointData, selectedPoint]);
-  return <section className={`${block}__map map`} ref={mapRef}></section>;
+  }, [map, points, selectedPoint]);
+  return (
+    <>
+      <section className={`${block}__map map`} ref={mapRef}></section>
+    </>
+  );
 }
 
 export default Map;

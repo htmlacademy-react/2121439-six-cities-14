@@ -15,6 +15,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import CityCardPremium from '../../components/city-card/city-card-component/card-premium-article';
 import Map from '../../components/map/map';
 import { ActiveCityMap } from '../../const';
+import { POINTS } from '../../mocks/map/points';
 
 type OfferScreenProp = {
   dataCity: AppCityProp[];
@@ -22,6 +23,7 @@ type OfferScreenProp = {
 
 function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
   const { id } = useParams();
+
   let dataIndex = 0;
   if (id) {
     const parsedIndex = parseInt(id, 20);
@@ -124,9 +126,10 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
             </div>
           </div>
           <Map
+            points={POINTS}
             location={ActiveCityMap.Amsterdam.location}
             block="offer"
-            selectedPoint={ActiveCityMap.Amsterdam.name}
+            selectedPoint={undefined}
           />
         </section>
         <div className="container">

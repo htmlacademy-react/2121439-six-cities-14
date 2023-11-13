@@ -48,7 +48,7 @@ export type Host = {
 
 export const ActiveCityMap = {
   Amsterdam: {
-    name: 'Amsterdam',
+    title: 'Amsterdam',
     location: {
       latitude: 52.37454,
       longitude: 4.897976,
@@ -56,29 +56,6 @@ export const ActiveCityMap = {
     },
   },
 };
-
-export const PointData = [
-  {
-    title: 'One point',
-    latitude: 52.37454,
-    longitude: 4.85309666406198,
-  },
-  {
-    title: 'Two point',
-    latitude: 52.37454,
-    longitude: 4.85309666406198,
-  },
-  {
-    title: 'Three point',
-    latitude: 52.37454,
-    longitude: 4.929309666406198,
-  },
-  {
-    title: 'Four point',
-    latitude: 52.37454,
-    longitude: 4.939309666406198,
-  },
-];
 
 export const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 export const COPYRIGHT =

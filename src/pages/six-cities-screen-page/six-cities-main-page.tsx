@@ -7,6 +7,8 @@ import CityLocationList from './six-cities-main-component/city-locations-list/ci
 import { cityLocationsData } from '../../mocks/city-locations-data';
 import { AppCityProp } from '../../type/offer.type';
 import { ActiveCityMap, CardCityCharacter } from '../../const';
+
+import { POINTS } from '../../mocks/map/points';
 import Map from '../../components/map/map';
 
 type SixCitiesPageProps = {
@@ -96,9 +98,10 @@ function SixCitiesMainPage({
             </section>
             <div className="cities__right-section">
               <Map
+                points={POINTS}
                 location={ActiveCityMap.Amsterdam.location}
                 block="cities"
-                selectedPoint={ActiveCityMap.Amsterdam.name}
+                selectedPoint={undefined}
               />
             </div>
           </div>
