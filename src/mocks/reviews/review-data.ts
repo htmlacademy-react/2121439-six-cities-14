@@ -11,7 +11,7 @@ interface reviewProp {
   date: string;
 }
 
-export const reviewsData: reviewProp[] = [
+export const reviewData: reviewProp[] = [
   {
     id: 1,
     user: {
