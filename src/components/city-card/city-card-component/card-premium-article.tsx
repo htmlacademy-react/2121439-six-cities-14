@@ -1,5 +1,5 @@
 type CardPremiumProps = {
-  premium: boolean;
+  premium: boolean | undefined;
   className: string;
 };
 

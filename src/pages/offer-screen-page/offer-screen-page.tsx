@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { v4 as uuid4 } from 'uuid';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 import CityCard from '../../components/city-card/city-card';
 import Header from '../../components/header/header';
 import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
@@ -11,30 +13,35 @@ import OfferInsideList from './offer-screen-component/offer-inside-list/offer-in
 import Form from '../../components/form/form';
 import { AppCityProp } from '../../type/offer.type';
 import { CardCityCharacter } from '../../const';
-import { Navigate, useParams } from 'react-router-dom';
+
 import CityCardPremium from '../../components/city-card/city-card-component/card-premium-article';
 import Map from '../../components/map/map';
 import { ActiveCityMap } from '../../const';
 import { POINTS } from '../../mocks/map/points';
+import { cityData } from '../../mocks/offer/city-data';
+import NotFoundScreen from '../../components/not-found-screen/not-found-screen';
 
 type OfferScreenProp = {
   dataCity: AppCityProp[];
 };
 
 function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
-  const { id } = useParams();
+  const { id } = useParams<string>();
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [id]);
+  const strId = id?.slice(1);
 
-  let dataIndex = 0;
-  if (id) {
-    const parsedIndex = parseInt(id, 20);
-    if (parsedIndex < dataCity.length) {
-      dataIndex = parsedIndex;
-    } else {
-      return <Navigate to="not-found-screen" />;
-    }
+  const data = cityData.find((el): boolean => el.id === Number(strId));
+
+  if (!data) {
+    return <NotFoundScreen />;
   }
-
-  const data = dataCity[dataIndex];
+  const ratingStarPercentage: number = (data.rating / 6) * 100;
   return (
     <div className="page">
       <Helmet>
@@ -46,9 +53,11 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {data.images.map((item) => (
-                <OfferScreenImageList src={item} key={uuid4()} />
-              ))}
+              {data?.images.map(
+                (item): JSX.Element => (
+                  <OfferScreenImageList src={item} key={uuid4()} />
+                )
+              )}
             </div>
           </div>
           <div className="offer__container container">
@@ -65,10 +74,12 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{ width: '80%' }}></span>
+                  <span style={{ width: `${ratingStarPercentage}%` }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="offer__rating-value rating__value">4.8</span>
+                <span className="offer__rating-value rating__value">{`${ratingStarPercentage.toFixed(
+                  2
+                )}`}</span>
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
@@ -82,43 +93,49 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
                 </li>
               </ul>
               <div className="offer__price">
-                <b className="offer__price-value">{data.price}</b>
+                <b className="offer__price-value">{`${data.price}$`}</b>
                 <span className="offer__price-text">&nbsp;night</span>
               </div>
               <div className="offer__inside">
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
-                  {data.goods.map((good) => (
-                    <OfferInsideList title={good} key={uuid4()} />
-                  ))}
+                  {data.goods.map(
+                    (good): JSX.Element => (
+                      <OfferInsideList title={good} key={uuid4()} />
+                    )
+                  )}
                 </ul>
               </div>
               <div className="offer__host">
                 <h2 className="offer__host-title">Meet the host</h2>
-                {offerHostUsers.map((info) => (
-                  <OfferHostUser
-                    avatarUrl={info.avatarUrl}
-                    name={info.name}
-                    isPro={info.isPro}
-                    id={info.id}
-                    key={uuid4()}
-                  />
-                ))}
+                {offerHostUsers.map(
+                  (info): JSX.Element => (
+                    <OfferHostUser
+                      avatarUrl={info.avatarUrl}
+                      name={info.name}
+                      isPro={info.isPro}
+                      id={info.id}
+                      key={uuid4()}
+                    />
+                  )
+                )}
               </div>
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">
                   Reviews &middot; <span className="reviews__amount">1</span>
                 </h2>
                 <ul className="reviews__list">
-                  {offerScreenReviewUsers.map((item) => (
-                    <OfferScreenListReviews
-                      avatar={item.avatar}
-                      userName={item.userName}
-                      reviewsText={item.reviewsText}
-                      reviewsDate={item.reviewsDate}
-                      key={uuid4()}
-                    />
-                  ))}
+                  {offerScreenReviewUsers.map(
+                    (item): JSX.Element => (
+                      <OfferScreenListReviews
+                        avatar={item.avatar}
+                        userName={item.userName}
+                        reviewsText={item.reviewsText}
+                        reviewsDate={item.reviewsDate}
+                        key={uuid4()}
+                      />
+                    )
+                  )}
                 </ul>
 
                 <Form />
@@ -152,6 +169,7 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
                     width={CardCityCharacter.WidthOffer}
                     height={CardCityCharacter.HeightOffer}
                     isPremium={city.isPremium}
+                    rating={city.rating}
                   />
                 )
               )}

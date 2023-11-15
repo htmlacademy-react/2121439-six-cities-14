@@ -15,6 +15,7 @@ type CardCityProps = {
   classCard: string;
   classImageWrapper: string;
   isPremium: boolean;
+  rating: number;
 };
 
 function CityCard({
@@ -28,6 +29,7 @@ function CityCard({
   classCard,
   classImageWrapper,
   isPremium,
+  rating,
 }: CardCityProps): JSX.Element {
   const [active, setActive] = useState(false);
 
@@ -38,7 +40,7 @@ function CityCard({
   const mouseHandlerLeave = () => {
     setActive(false);
   };
-
+  const ratingStarPercentage: number = (rating / 6) * 100;
   return (
     <article
       className={`${classCard} place-card ${
@@ -71,10 +73,10 @@ function CityCard({
           </button>
         </div>
         <div className="place-card__rating rating">
-          <CityCardRating />
+          <CityCardRating rating={ratingStarPercentage} />
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${id - 1}`}>{title}</Link>
+          <Link to={`/offer/:${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
