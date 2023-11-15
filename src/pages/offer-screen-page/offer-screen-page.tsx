@@ -77,9 +77,9 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
                   <span style={{ width: `${ratingStarPercentage}%` }}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="offer__rating-value rating__value">{`${ratingStarPercentage.toFixed(
-                  2
-                )}`}</span>
+                <span className="offer__rating-value rating__value">
+                  {`${ratingStarPercentage.toFixed(2)}`}
+                </span>
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
@@ -128,11 +128,11 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
                   {offerScreenReviewUsers.map(
                     (item): JSX.Element => (
                       <OfferScreenListReviews
-                        avatar={item.avatar}
-                        userName={item.userName}
-                        reviewsText={item.reviewsText}
-                        reviewsDate={item.reviewsDate}
+                        user={item.user}
                         key={uuid4()}
+                        rating={item.rating}
+                        comment={item.comment}
+                        date={item.date}
                       />
                     )
                   )}
