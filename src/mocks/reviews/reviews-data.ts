@@ -1,4 +1,4 @@
-interface ReviewsData {
+interface reviewProp {
   id: number;
   user: {
     id: number;
@@ -11,7 +11,7 @@ interface ReviewsData {
   date: string;
 }
 
-export const ReviewsDataArr: ReviewsData[] = [
+export const reviewsData: reviewProp[] = [
   {
     id: 1,
     user: {

@@ -12,14 +12,57 @@ export enum AuthorizationStatus {
 }
 
 export enum CardCityCharacter {
-  widthOffer = '260',
-  heightOffer = '200',
-  widthFavorites = '150',
-  heightFavorites = '110',
-  classCitiesCard = 'cities__card',
-  classFavoritesCard = 'favorites__card',
-  classCitiesImageWrapper = 'cities__image-wrapper',
-  classFavoritesImageWrapper = 'favorites__image-wrapper',
-  classNearCard = 'near-places__card',
-  classNearImageWrapper = 'near-places__image-wrapper',
+  WidthOffer = '260',
+  HeightOffer = '200',
+  WidthFavorites = '150',
+  HeightFavorites = '110',
+  ClassCitiesCard = 'cities__card',
+  ClassFavoritesCard = 'favorites__card',
+  ClassCitiesImageWrapper = 'cities__image-wrapper',
+  ClassFavoritesImageWrapper = 'favorites__image-wrapper',
+  ClassNearCard = 'near-places__card',
+  ClassNearImageWrapper = 'near-places__image-wrapper',
 }
+
+export const MIN_COMMENT_LENGTH = 50;
+export const MAX_COMMENT_LENGTH = 260;
+export const COUNTER_OFFERS = 200;
+
+export type LocationType = {
+  latitude: number;
+  longitude: number;
+  zoom: number;
+};
+
+export type City = {
+  location: LocationType;
+  name: string;
+};
+
+export type Host = {
+  avatarUrl: string;
+  id: number;
+  isPro: boolean;
+  name: string;
+};
+
+export const ActiveCityMap = {
+  Amsterdam: {
+    title: 'Amsterdam',
+    location: {
+      latitude: 52.37454,
+      longitude: 4.897976,
+      zoom: 13,
+    },
+  },
+};
+
+export const TILE_LAYER = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+export const COPYRIGHT =
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+export const URL_MARKER_DEFAULT =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+
+export const URL_MARKER_CURRENT =
+  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';

@@ -1,7 +1,8 @@
-import PremiumCardArticle from './city-card-component/card-premium-article';
-import CityCardRating from './city-card-component/rating';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import PremiumCardArticle from './city-card-component/card-premium-article';
+import CityCardRating from './city-card-component/city-card-rating';
 
 type CardCityProps = {
   src: string;
@@ -13,6 +14,7 @@ type CardCityProps = {
   height: string;
   classCard: string;
   classImageWrapper: string;
+  isPremium: boolean;
 };
 
 function CityCard({
@@ -25,6 +27,7 @@ function CityCard({
   width,
   classCard,
   classImageWrapper,
+  isPremium,
 }: CardCityProps): JSX.Element {
   const [active, setActive] = useState(false);
 
@@ -44,7 +47,7 @@ function CityCard({
       onMouseEnter={mouseHandlerEnter}
       onMouseLeave={mouseHandlerLeave}
     >
-      <PremiumCardArticle />
+      <PremiumCardArticle premium={isPremium} className="place-card" />
       <div className={`${classImageWrapper} place-card__image-wrapper`}>
         <img
           className="place-card__image"
@@ -71,7 +74,7 @@ function CityCard({
           <CityCardRating />
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/:${id}`}>{title}</Link>
+          <Link to={`/offer/${id - 1}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

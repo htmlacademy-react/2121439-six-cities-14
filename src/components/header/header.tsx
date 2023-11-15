@@ -1,5 +1,4 @@
 import Logo from './logo';
-
 import HeaderUserLogin from './header-user-login';
 import { AuthorizationStatus } from '../../const';
 

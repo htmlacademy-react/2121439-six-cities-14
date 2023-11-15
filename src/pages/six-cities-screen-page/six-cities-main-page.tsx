@@ -1,20 +1,22 @@
-import Header from '../../components/header/header';
-import CityCard from '../../components/city-card/city-card';
-
-import CityLocationsList from './six-cities-main-component/city-locations-list/city-locations-list';
-import CityLocationsArr from '../../mocks/city-locations-data';
 import { Helmet } from 'react-helmet-async';
 import { v4 as uuidv4 } from 'uuid';
-import { AppCityProp } from '../../type/offer.type';
 
-import { CardCityCharacter } from '../../const';
+import Header from '../../components/header/header';
+import CityCard from '../../components/city-card/city-card';
+import CityLocationList from './six-cities-main-component/city-locations-list/city-location-list';
+import { cityLocationsData } from '../../mocks/city-locations-data';
+import { AppCityProp } from '../../type/offer.type';
+import { ActiveCityMap, CardCityCharacter } from '../../const';
+
+import { POINTS } from '../../mocks/map/points';
+import Map from '../../components/map/map';
 
 type SixCitiesPageProps = {
   cityData: AppCityProp[];
   countOffer: number;
 };
 
-function SixCitiesScreen({
+function SixCitiesMainPage({
   cityData,
   countOffer,
 }: SixCitiesPageProps): JSX.Element {
@@ -30,9 +32,9 @@ function SixCitiesScreen({
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {CityLocationsArr.map(
+              {cityLocationsData.map(
                 (cityName): JSX.Element => (
-                  <CityLocationsList name={cityName} key={uuidv4()} />
+                  <CityLocationList name={cityName} key={uuidv4()} />
                 )
               )}
             </ul>
@@ -72,7 +74,6 @@ function SixCitiesScreen({
                 </ul>
               </form>
 
-              {/* City card */}
               <div className="cities__places-list places__list tabs__content">
                 {cityData.map(
                   (item): JSX.Element => (
@@ -83,11 +84,12 @@ function SixCitiesScreen({
                       type={item.type}
                       key={item.id}
                       id={item.id}
-                      width={CardCityCharacter.widthOffer}
-                      height={CardCityCharacter.heightOffer}
-                      classCard={CardCityCharacter.classCitiesCard}
+                      isPremium={item.isPremium}
+                      width={CardCityCharacter.WidthOffer}
+                      height={CardCityCharacter.HeightOffer}
+                      classCard={CardCityCharacter.ClassCitiesCard}
                       classImageWrapper={
-                        CardCityCharacter.classCitiesImageWrapper
+                        CardCityCharacter.ClassCitiesImageWrapper
                       }
                     />
                   )
@@ -95,7 +97,12 @@ function SixCitiesScreen({
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                points={POINTS}
+                location={ActiveCityMap.Amsterdam.location}
+                block="cities"
+                selectedPoint={undefined}
+              />
             </div>
           </div>
         </div>
@@ -104,4 +111,4 @@ function SixCitiesScreen({
   );
 }
 
-export default SixCitiesScreen;
+export default SixCitiesMainPage;

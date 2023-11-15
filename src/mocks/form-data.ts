@@ -1,6 +1,6 @@
-import { FormInputValue } from '../type/form.type';
+import { formInputValue } from '../type/form.type';
 
-export const FormInputValueArr: FormInputValue[] = [
+export const formInputValues: formInputValue[] = [
   {
     id: '5',
     title: 'perfect',

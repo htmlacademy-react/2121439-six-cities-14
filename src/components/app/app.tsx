@@ -1,16 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import SixCitiesScreen from '../../pages/six-cities-main-page/six-citites-screen-page';
+import { HelmetProvider } from 'react-helmet-async';
+import SixCitiesMainPage from '../../pages/six-cities-screen-page/six-cities-main-page';
 import LoginScreenPage from '../../pages/login-screen-page/login-screen-page';
 import OfferScreenPage from '../../pages/offer-screen-page/offer-screen-page';
 import FavoritesScreenPage from '../../pages/favorites-screen-page/favorites-screen-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
-
-import { AppRoute, AuthorizationStatus } from '../../const';
-import { HelmetProvider } from 'react-helmet-async';
-
 import { AppCityProp } from '../../type/offer.type';
+import { COUNTER_OFFERS } from '../../const';
+import { AppRoute, AuthorizationStatus } from '../../const';
+
 type AppProps = {
   dataCity: AppCityProp[];
 };
@@ -22,7 +21,12 @@ function App({ dataCity }: AppProps): JSX.Element {
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<SixCitiesScreen countOffer={300} cityData={dataCity} />}
+            element={
+              <SixCitiesMainPage
+                countOffer={COUNTER_OFFERS}
+                cityData={dataCity}
+              />
+            }
           />
           <Route
             path={AppRoute.Favorites}
