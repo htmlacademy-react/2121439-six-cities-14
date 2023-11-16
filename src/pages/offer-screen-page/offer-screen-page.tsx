@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { v4 as uuid4 } from 'uuid';
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CityCard from '../../components/city-card/city-card';
 import Header from '../../components/header/header';
 import OfferScreenImageList from './offer-screen-component/offer-screen-image-list/offer-screen-image-list';
@@ -17,15 +17,16 @@ import { CardCityCharacter } from '../../const';
 import CityCardPremium from '../../components/city-card/city-card-component/card-premium-article';
 import Map from '../../components/map/map';
 import { ActiveCityMap } from '../../const';
-import { POINTS } from '../../mocks/map/points';
 import { cityData } from '../../mocks/offer/city-data';
 import NotFoundScreen from '../../components/not-found-screen/not-found-screen';
+import { Point } from '../../type/map.type';
 
 type OfferScreenProp = {
   dataCity: AppCityProp[];
 };
 
 function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<Point | undefined>();
   const { id } = useParams<string>();
   useEffect(() => {
     window.scrollTo({
@@ -42,6 +43,21 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
     return <NotFoundScreen />;
   }
   const ratingStarPercentage: number = (data.rating / 6) * 100;
+
+  const POINT_CITY: Point[] = [];
+  cityData.map((city) => {
+    POINT_CITY.push({
+      title: city.title,
+      lat: city.location.latitude,
+      lng: city.location.longitude,
+    });
+  });
+  const handleCityCardHover = (cardItemName: string) => {
+    const currentPoint = POINT_CITY.find(
+      (point) => point.title === cardItemName
+    );
+    setSelectedPoint(currentPoint);
+  };
   return (
     <div className="page">
       <Helmet>
@@ -143,10 +159,10 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
             </div>
           </div>
           <Map
-            points={POINTS}
+            points={POINT_CITY}
             location={ActiveCityMap.Amsterdam.location}
             block="offer"
-            selectedPoint={undefined}
+            selectedPoint={selectedPoint}
           />
         </section>
         <div className="container">
@@ -170,6 +186,7 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
                     height={CardCityCharacter.HeightOffer}
                     isPremium={city.isPremium}
                     rating={city.rating}
+                    onCardItemHover={handleCityCardHover}
                   />
                 )
               )}

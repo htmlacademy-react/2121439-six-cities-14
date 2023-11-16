@@ -2,23 +2,18 @@ import { Points } from '../../type/map.type';
 
 export const POINTS: Points = [
   {
-    title: 'One point',
+    title: 'The Pondhouse - A Magical Place',
     lat: 52.37454,
-    lng: 4.85309666406198,
+    lng: 4.899976,
   },
   {
-    title: 'Two point',
+    title: 'Loft Studio in the Central Area',
     lat: 52.37454,
-    lng: 4.85309666406198,
+    lng: 4.9019759999999994,
   },
   {
-    title: 'Three point',
-    lat: 52.37454,
-    lng: 4.929309666406198,
-  },
-  {
-    title: 'Four point',
-    lat: 52.37454,
-    lng: 4.939309666406198,
+    title: 'House in countryside',
+    lat: 52.385540000000006,
+    lng: 4.902976,
   },
 ];
