@@ -26,6 +26,7 @@ function FavoritesList({ cityData }: FavoritesListProp): JSX.Element {
               type={item.type}
               key={item.id}
               id={item.id}
+              rating={item.rating}
               width={CardCityCharacter.WidthOffer}
               height={CardCityCharacter.HeightOffer}
               classCard={CardCityCharacter.ClassCitiesCard}

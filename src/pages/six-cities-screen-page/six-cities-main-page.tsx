@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { v4 as uuidv4 } from 'uuid';
-
+import { useState } from 'react';
 import Header from '../../components/header/header';
 import CityCard from '../../components/city-card/city-card';
 import CityLocationList from './six-cities-main-component/city-locations-list/city-location-list';
@@ -8,8 +8,8 @@ import { cityLocationsData } from '../../mocks/city-locations-data';
 import { AppCityProp } from '../../type/offer.type';
 import { ActiveCityMap, CardCityCharacter } from '../../const';
 
-import { POINTS } from '../../mocks/map/points';
 import Map from '../../components/map/map';
+import { Point } from '../../type/map.type';
 
 type SixCitiesPageProps = {
   cityData: AppCityProp[];
@@ -20,6 +20,23 @@ function SixCitiesMainPage({
   cityData,
   countOffer,
 }: SixCitiesPageProps): JSX.Element {
+  const [selectedPoint, setSelectedPoint] = useState<Point | undefined>();
+
+  const POINT_CITY: Point[] = [];
+  cityData.map((city) => {
+    POINT_CITY.push({
+      title: city.title,
+      lat: city.location.latitude,
+      lng: city.location.longitude,
+    });
+  });
+  const handleCityCardHover = (cardItemName: string) => {
+    const currentPoint = POINT_CITY.find(
+      (point) => point.title === cardItemName
+    );
+    setSelectedPoint(currentPoint);
+  };
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -92,6 +109,7 @@ function SixCitiesMainPage({
                       classImageWrapper={
                         CardCityCharacter.ClassCitiesImageWrapper
                       }
+                      onCardItemHover={handleCityCardHover}
                     />
                   )
                 )}
@@ -99,10 +117,10 @@ function SixCitiesMainPage({
             </section>
             <div className="cities__right-section">
               <Map
-                points={POINTS}
+                points={POINT_CITY}
                 location={ActiveCityMap.Amsterdam.location}
                 block="cities"
-                selectedPoint={undefined}
+                selectedPoint={selectedPoint}
               />
             </div>
           </div>
