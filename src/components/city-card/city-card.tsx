@@ -88,7 +88,7 @@ function CityCard({
           <CityCardRating rating={ratingStarPercentage} />
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/:${id}`} onMouseEnter={handleCardItemHover}>
+          <Link to={`/offer/${id}`} onMouseEnter={handleCardItemHover}>
             {title}
           </Link>
         </h2>

@@ -13,7 +13,6 @@ import OfferInsideList from './offer-screen-component/offer-inside-list/offer-in
 import Form from '../../components/form/form';
 import { AppCityProp } from '../../type/offer.type';
 import { CardCityCharacter } from '../../const';
-
 import CityCardPremium from '../../components/city-card/city-card-component/card-premium-article';
 import Map from '../../components/map/map';
 import { ActiveCityMap } from '../../const';
@@ -35,7 +34,8 @@ function OfferScreenPage({ dataCity }: OfferScreenProp): JSX.Element {
       behavior: 'smooth',
     });
   }, [id]);
-  const strId = id?.slice(1);
+
+  const strId = id;
 
   const data = cityData.find((el): boolean => el.id === Number(strId));
 

@@ -167,7 +167,7 @@ export const cityData: AppCityProp[] = [
     description:
       'I am happy to welcome you to my apartment in the city center! Three words: location, cosy and chic!',
     location: {
-      latitude: 52.37554,
+      latitude: 52.37454,
       longitude: 4.9019759999999994,
       zoom: 16,
     },
