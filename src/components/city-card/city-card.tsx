@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 import PremiumCardArticle from './city-card-component/card-premium-article';
 import CityCardRating from './city-card-component/city-card-rating';
+import NotFoundPage from '../../pages/not-found-page/not-found-page';
 
 type CardCityProps = {
   src: string;
@@ -16,6 +17,7 @@ type CardCityProps = {
   classImageWrapper: string;
   isPremium: boolean;
   rating: number;
+  onCardItemHover?: (cardItemName: string) => void;
 };
 
 function CityCard({
@@ -30,6 +32,7 @@ function CityCard({
   classImageWrapper,
   isPremium,
   rating,
+  onCardItemHover,
 }: CardCityProps): JSX.Element {
   const [active, setActive] = useState(false);
 
@@ -41,6 +44,15 @@ function CityCard({
     setActive(false);
   };
   const ratingStarPercentage: number = (rating / 6) * 100;
+
+  const handleCardItemHover = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    if (!onCardItemHover) {
+      return <NotFoundPage />;
+    } else {
+      onCardItemHover(event.currentTarget.innerText);
+    }
+  };
   return (
     <article
       className={`${classCard} place-card ${
@@ -76,7 +88,9 @@ function CityCard({
           <CityCardRating rating={ratingStarPercentage} />
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/:${id}`}>{title}</Link>
+          <Link to={`/offer/${id}`} onMouseEnter={handleCardItemHover}>
+            {title}
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
