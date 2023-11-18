@@ -57,7 +57,6 @@ export const ActiveCityMap = {
   },
 };
 
-const test: number[] = [1, 2];
 export const TILE_LAYER =
   'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
 export const COPYRIGHT =
